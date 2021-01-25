@@ -13,23 +13,53 @@ function createTask(evt) {
     const todoItem = document.createElement('div');
     const todoParagraph = document.createElement('p');
     const checkbox = document.createElement('input');
+    const editBtn = document.createElement('button');
     const delBtn = document.createElement('button');
     const trashIcon = document.createElement('i');
-    checkbox.type = 'checkbox';
-    checkbox.className = 'todo-checkbox';
-    todoParagraph.innerText = inputValue;
-    todoItem.className = 'todo-item';
-    delBtn.className = 'todo-button';
-    trashIcon.className = 'fas fa-trash';
-    delBtn.appendChild(trashIcon);
+    const editIcon = document.createElement('i');
 
+    todoItem.className = 'todo-item';
+    checkbox.className = 'todo-checkbox';
+    delBtn.className = 'todo-button';
+    editBtn.className = 'edit-button'
+    trashIcon.className = 'fas fa-trash';
+    editIcon.className = 'fas fa-pencil-alt';
+    checkbox.type = 'checkbox';
+    todoParagraph.innerText = inputValue;
+    todoParagraph.contentEditable = 'false'
+    
+    delBtn.appendChild(trashIcon);
+    editBtn.appendChild(editIcon);
     todoItem.appendChild(checkbox);
     todoItem.appendChild(todoParagraph);
+    todoItem.appendChild(editBtn);
     todoItem.appendChild(delBtn);
 
-    const div1 = document.getElementById('div1');
+    const todoFilter = document.getElementById('todoFilter');
 
-    //Remove task
+    //Filtrar task
+    todoFilter.addEventListener('keyup', function() {
+        var filter = todoFilter.value.toUpperCase();
+        var txtValue = todoParagraph.textContent || todoParagraph.innerText;
+        if(txtValue.toUpperCase().indexOf(filter) > -1) {
+            todoItem.style.display = '';
+        } else {
+            todoItem.style.display = 'none';
+        }
+    });
+
+    //Editar task
+    editBtn.addEventListener('focus', function(e) {
+        todoParagraph.contentEditable = 'true';
+        todoParagraph.focus();
+    });
+
+    editBtn.addEventListener('blur', function(e) {
+        
+        todoParagraph.focus();
+    })
+
+    //Remover task
     delBtn.addEventListener('click', function(e) {
         delBtn.parentElement.remove();
     })
@@ -38,14 +68,10 @@ function createTask(evt) {
     if(inputValue == '') {
         alert('Digite uma tarefa válida')
     } else {
-        todoBody.insertBefore(todoItem, div1);
+        todoBody.insertBefore(todoItem, todoFilter.nextSibling);
     }
     
 }
-
-
-
-
 
 addBtn.addEventListener('click', createTask);
 
