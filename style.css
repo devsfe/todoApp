@@ -74,3 +74,7 @@ form {
 .todo-checkbox {
     margin: 0 5px 0 0;
 }
+
+.todo-button {
+    margin-left: auto;
+}
