@@ -77,4 +77,7 @@ form {
 
 .todo-button {
     margin-left: auto;
+    cursor: pointer;
+    padding: 5px;
+    border: none;
 }

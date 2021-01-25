@@ -1,4 +1,5 @@
 const addBtn = document.getElementById('add-btn');
+var btnDel = document.getElementsByClassName('todo-button');
 const itemTodo = document.getElementById('itemTodo');
 const todoBody = document.getElementById('todoBody');
 const inputAdd = document.getElementById('add-input');
@@ -21,18 +22,23 @@ function createTask(evt) {
     delBtn.className = 'todo-button';
     trashIcon.className = 'fas fa-trash';
     delBtn.appendChild(trashIcon);
-    
+
     todoItem.appendChild(checkbox);
     todoItem.appendChild(todoParagraph);
     todoItem.appendChild(delBtn);
-    
-    
 
+    const div1 = document.getElementById('div1');
+
+    //Remove task
+    delBtn.addEventListener('click', function(e) {
+        delBtn.parentElement.remove();
+    })
+    
     //Adicionar elemento ao DOM
     if(inputValue == '') {
         alert('Digite uma tarefa válida')
     } else {
-        todoBody.insertBefore(todoItem, itemTodo);
+        todoBody.insertBefore(todoItem, div1);
     }
     
 }
@@ -40,4 +46,12 @@ function createTask(evt) {
 
 
 
+
 addBtn.addEventListener('click', createTask);
+
+
+
+
+
+
+
