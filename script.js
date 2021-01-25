@@ -70,8 +70,30 @@ function createTask(evt) {
     } else {
         todoBody.insertBefore(todoItem, todoFilter.nextSibling);
     }
+
+    // Local storage
+    var divArray = Array.prototype.slice.call(document.querySelectorAll(".todo-item"));
+    divArray = divArray.map(e => e.outerHTML);
+
+    localStorage.setItem('TodoItems', divArray);
+
+    
+
+}
+
+//get local storage
+function showLocal() {
+    var savedTodo = localStorage.getItem('TodoItems');
+
+    
+    
+    console.log(savedTodo);
+
     
 }
+
+showLocal();
+
 
 addBtn.addEventListener('click', createTask);
 
