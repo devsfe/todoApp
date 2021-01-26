@@ -4,6 +4,7 @@ const itemTodo = document.getElementById('itemTodo');
 const todoBody = document.getElementById('todoBody');
 const inputAdd = document.getElementById('add-input');
 
+
 //Criar Task
 function createTask(evt) {
     evt.preventDefault();
@@ -72,27 +73,22 @@ function createTask(evt) {
     }
 
     // Local storage
-    var divArray = Array.prototype.slice.call(document.querySelectorAll(".todo-item"));
-    divArray = divArray.map(e => e.outerHTML);
-
-    localStorage.setItem('TodoItems', divArray);
-
+    var teste = Array.from(todoItem);
     
+    localStorage.setItem('local',(teste));    
 
+    console.log(teste);
 }
 
-//get local storage
-function showLocal() {
-    var savedTodo = localStorage.getItem('TodoItems');
 
-    
-    
-    console.log(savedTodo);
 
-    
-}
 
-showLocal();
+
+
+
+
+
+
 
 
 addBtn.addEventListener('click', createTask);
