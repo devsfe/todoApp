@@ -18,14 +18,14 @@ function createTask(evt) {
 
     
     // Adicionando classe aos elementos
-    paragraph.classname = ('todo-paragraph');
-    checkbox.classname = ('todo-checkbox');
-    delBtn.classname = ('del-btn fas fa-trash');
+    paragraph.className = 'todo-paragraph';
+    checkbox.className = 'todo-checkbox';
+    delBtn.className = 'del-btn fas fa-trash';
     
     
     // Criando Div para Task
     task = document.createElement('div');
-    task.classname = ('todo-item');
+    task.className = 'todo-item';
 
     task.appendChild(checkbox);
     task.appendChild(paragraph);
