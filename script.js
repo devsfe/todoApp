@@ -16,12 +16,10 @@ function createTask(evt) {
     checkbox.type = 'checkbox';
     delBtn = document.createElement('button');
 
-    
     // Adicionando classe aos elementos
     paragraph.className = 'todo-paragraph';
     checkbox.className = 'todo-checkbox';
     delBtn.className = 'del-btn fas fa-trash';
-    
     
     // Criando Div para Task
     task = document.createElement('div');
@@ -35,7 +33,7 @@ function createTask(evt) {
     const inputValue = inputAdd.value;
 
     if(inputValue == '') {
-        alert('Digite uma tarefa válida')
+        alert('Digite uma tarefa válida');
     } else {
         todoBody.insertBefore(task, todoFilter.nextSibling);
         paragraph.innerText = inputValue;
@@ -50,9 +48,14 @@ function removeTask(e) {
 }
 
 // Edit task
-function editTask() {
-    todoParagraph.contentEditable = 'true';
-    todoParagraph.focus();    
+function editTask(e) {
+    var todoParagraph = document.querySelectorAll('.todo-paragraph');
+    if(e.target.classList.contains('edit-button')) {
+        for(let i = 0; i < todoParagraph.length; i++) {
+            todoParagraph[i].contentEditable = 'true';
+            todoParagraph[i].focus();  
+        }  
+    }
 }
 
 // Filter task
@@ -69,12 +72,11 @@ function filterTask() {
     }     
 }
 
-
 // Eventos
 todoFilter.addEventListener('keyup', filterTask);
 addBtn.addEventListener('click', createTask);
 todo.addEventListener('click', removeTask);
-
+todo.addEventListener('click', editTask);
 
 
 
