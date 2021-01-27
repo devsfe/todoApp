@@ -49,7 +49,6 @@ function removeTask(e) {
     }   
 }
 
-
 // Edit task
 function editTask() {
     todoParagraph.contentEditable = 'true';
@@ -59,14 +58,16 @@ function editTask() {
 // Filter task
 function filterTask() {
     var filter = todoFilter.value.toUpperCase();
-    var txtValue = todoParagraph.textContent || todoParagraph.innerText;
+    var todoParagraph = document.querySelectorAll('.todo-paragraph');
+    for(let i = 0; i < todoParagraph.length; i++) {
+        var txtValue = todoParagraph[i].textContent || todoParagraph[i].innerText;
         if(txtValue.toUpperCase().indexOf(filter) > -1) {
-            todoItem.style.display = '';
+            todoParagraph[i].parentElement.style.display = '';
         } else {
-            todoItem.style.display = 'none';
+            todoParagraph[i].parentElement.style.display = 'none';
         } 
+    }     
 }
-
 
 
 // Eventos
