@@ -15,11 +15,13 @@ function createTask(evt) {
     checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
     delBtn = document.createElement('button');
+    editBtn = document.createElement('button');
 
     // Adicionando classe aos elementos
     paragraph.className = 'todo-paragraph';
     checkbox.className = 'todo-checkbox';
     delBtn.className = 'del-btn fas fa-trash';
+    editBtn.className = 'edit-button fas fa-pencil-alt';
     
     // Criando Div para Task
     task = document.createElement('div');
@@ -27,6 +29,7 @@ function createTask(evt) {
 
     task.appendChild(checkbox);
     task.appendChild(paragraph);
+    task.appendChild(editBtn);
     task.appendChild(delBtn)
     
     //Adicionar elementos ao DOM

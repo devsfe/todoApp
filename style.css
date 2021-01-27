@@ -20,12 +20,17 @@ body {
     width: 60%;
     height: 500px;
     background-color: #ffff;
+    overflow: auto;     
 }
 
 .container-top {
     height: 50px;
     background-color: #ebe8e8;
     padding: 10px;
+}
+
+.todo-body {
+    overflow: auto;
 }
 
 .todo-title {
@@ -99,11 +104,22 @@ form {
     color: red;
 }
 
+.del-btn {
+    align-self: flex-end;
+    justify-self: flex-end;
+    margin-left: auto;
+    cursor: pointer;
+}
+
 .edit-button {
     cursor: pointer;
     border: none;    
     color: green;
     margin: 0 0 0 15px;
+}
+
+.todo-checkbox:checked ~ .todo-paragraph {
+    text-decoration: line-through;    
 }
 
 @keyframes animate {
