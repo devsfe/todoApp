@@ -1,97 +1,78 @@
+var todo = document.getElementById('todo');
 const addBtn = document.getElementById('add-btn');
 var btnDel = document.getElementsByClassName('todo-button');
 const itemTodo = document.getElementById('itemTodo');
 const todoBody = document.getElementById('todoBody');
 const inputAdd = document.getElementById('add-input');
+const todoFilter = document.getElementById('todoFilter');
 
-
-//Criar Task
+// Criar Task
 function createTask(evt) {
     evt.preventDefault();
 
-    var inputValue = inputAdd.value;
-
-    const todoItem = document.createElement('div');
-    const todoParagraph = document.createElement('p');
-    const checkbox = document.createElement('input');
-    const editBtn = document.createElement('button');
-    const delBtn = document.createElement('button');
-    const trashIcon = document.createElement('i');
-    const editIcon = document.createElement('i');
-
-    todoItem.className = 'todo-item';
-    checkbox.className = 'todo-checkbox';
-    delBtn.className = 'todo-button';
-    editBtn.className = 'edit-button'
-    trashIcon.className = 'fas fa-trash';
-    editIcon.className = 'fas fa-pencil-alt';
+    // Criando elementos
+    paragraph = document.createElement('p');
+    checkbox = document.createElement('input');
     checkbox.type = 'checkbox';
-    todoParagraph.innerText = inputValue;
-    todoParagraph.contentEditable = 'false'
+    delBtn = document.createElement('button');
+
     
-    delBtn.appendChild(trashIcon);
-    editBtn.appendChild(editIcon);
-    todoItem.appendChild(checkbox);
-    todoItem.appendChild(todoParagraph);
-    todoItem.appendChild(editBtn);
-    todoItem.appendChild(delBtn);
+    // Adicionando classe aos elementos
+    paragraph.classname = ('todo-paragraph');
+    checkbox.classname = ('todo-checkbox');
+    delBtn.classname = ('del-btn fas fa-trash');
+    
+    
+    // Criando Div para Task
+    task = document.createElement('div');
+    task.classname = ('todo-item');
 
-    const todoFilter = document.getElementById('todoFilter');
+    task.appendChild(checkbox);
+    task.appendChild(paragraph);
+    task.appendChild(delBtn)
+    
+    //Adicionar elementos ao DOM
+    const inputValue = inputAdd.value;
 
-    //Filtrar task
-    todoFilter.addEventListener('keyup', function() {
-        var filter = todoFilter.value.toUpperCase();
-        var txtValue = todoParagraph.textContent || todoParagraph.innerText;
+    if(inputValue == '') {
+        alert('Digite uma tarefa válida')
+    } else {
+        todoBody.insertBefore(task, todoFilter.nextSibling);
+        paragraph.innerText = inputValue;
+    }  
+}
+
+// Remove task
+function removeTask(e) {
+    if (e.target.classList.contains('del-btn')) {
+        e.target.parentElement.remove();  
+    }   
+}
+
+
+// Edit task
+function editTask() {
+    todoParagraph.contentEditable = 'true';
+    todoParagraph.focus();    
+}
+
+// Filter task
+function filterTask() {
+    var filter = todoFilter.value.toUpperCase();
+    var txtValue = todoParagraph.textContent || todoParagraph.innerText;
         if(txtValue.toUpperCase().indexOf(filter) > -1) {
             todoItem.style.display = '';
         } else {
             todoItem.style.display = 'none';
-        }
-    });
-
-    //Editar task
-    editBtn.addEventListener('focus', function(e) {
-        todoParagraph.contentEditable = 'true';
-        todoParagraph.focus();
-    });
-
-    editBtn.addEventListener('blur', function(e) {
-        
-        todoParagraph.focus();
-    })
-
-    //Remover task
-    delBtn.addEventListener('click', function(e) {
-        delBtn.parentElement.remove();
-    })
-    
-    //Adicionar elemento ao DOM
-    if(inputValue == '') {
-        alert('Digite uma tarefa válida')
-    } else {
-        todoBody.insertBefore(todoItem, todoFilter.nextSibling);
-    }
-
-    // Local storage
-    var teste = Array.from(todoItem);
-    
-    localStorage.setItem('local',(teste));    
-
-    console.log(teste);
+        } 
 }
 
 
 
-
-
-
-
-
-
-
-
-
+// Eventos
+todoFilter.addEventListener('keyup', filterTask);
 addBtn.addEventListener('click', createTask);
+todo.addEventListener('click', removeTask);
 
 
 
