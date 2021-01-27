@@ -25,7 +25,7 @@ body {
 
 .container-top {
     height: 50px;
-    background-color: #ebe8e8;
+    background-color: #52a2fa;
     padding: 10px;
 }
 
@@ -35,6 +35,7 @@ body {
 
 .todo-title {
     font-size: 26px;
+    color: #fff;
 }
 
 .todo-body {
@@ -84,7 +85,7 @@ form {
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: #F2F2F2;
+    background-color: #74b3f7;
     width: 98%;
     margin: 0 0 10px 0;
     animation: animate .3s;
@@ -93,6 +94,19 @@ form {
 
 .todo-checkbox {
     margin: 0 5px 0 0;
+    width: 20px;
+    height: 20px;
+    border-radius: 50px;
+    background: #fcfff4;
+    background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
+    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
+    cursor: pointer;
+}
+
+
+
+.todo-paragraph {
+    color: #1c1c1c;
 }
 
 .todo-button {

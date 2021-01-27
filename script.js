@@ -52,12 +52,11 @@ function removeTask(e) {
 
 // Edit task
 function editTask(e) {
-    var todoParagraph = document.querySelectorAll('.todo-paragraph');
     if(e.target.classList.contains('edit-button')) {
-        for(let i = 0; i < todoParagraph.length; i++) {
-            todoParagraph[i].contentEditable = 'true';
-            todoParagraph[i].focus();  
-        }  
+        e.target.parentElement.firstElementChild.nextElementSibling.contentEditable = 'true';
+        e.target.parentElement.firstElementChild.nextElementSibling.focus();
+    } else {
+        e.target.parentElement.firstElementChild.nextElementSibling.contentEditable = 'false';
     }
 }
 
