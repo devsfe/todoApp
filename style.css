@@ -195,6 +195,11 @@ form {
         background-size: 5%;
         background-position: 8px 8px;
     }
+
+    .label {
+        margin-right: 20%;
+        margin-bottom: 50px;
+    }
 }
 
 @media(max-width: 800px) {
@@ -212,6 +217,7 @@ form {
     .container {
         width: 80%;
     }
+
 }
 
 @media(max-width: 450px) {
@@ -222,6 +228,18 @@ form {
     .todo-filter {
         background-size: 8%;
         background-position: 12px 9px;
+    }
+
+    .label {
+        width: 50px;
+        height: 20px;
+    }
+
+    .ball {
+        width: 19px;
+        height: 18px;
+        top: 1px;
+        left: 2px;      
     }
 }
 
