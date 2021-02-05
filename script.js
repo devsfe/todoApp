@@ -1,10 +1,14 @@
 var todo = document.getElementById('todo');
 const addBtn = document.getElementById('add-btn');
 var btnDel = document.getElementsByClassName('todo-button');
-const itemTodo = document.getElementById('itemTodo');
+const itemTodo = document.querySelectorAll('.todo-item');
+const todoParagraph = document.querySelectorAll('.todo-paragraph');
 const todoBody = document.getElementById('todoBody');
 const inputAdd = document.getElementById('add-input');
 const todoFilter = document.getElementById('todoFilter');
+var checkbox = document.getElementById('checkbox');
+const containerTop = document.getElementById('container-top');
+const todoTitle = document.getElementById('todo-title');
 
 // Criar Task
 function createTask(evt) {
@@ -74,11 +78,22 @@ function filterTask() {
     }     
 }
 
+// Dark mode
+checkbox.addEventListener('change' ,() => {
+    // change the theme of website
+    document.body.classList.toggle('dark');
+    todo.classList.toggle('lightDark');
+    containerTop.classList.toggle('mediumDark');
+    todoTitle.classList.toggle('grey');
+});
+
+
 // Eventos
 todoFilter.addEventListener('keyup', filterTask);
 addBtn.addEventListener('click', createTask);
 todo.addEventListener('click', removeTask);
 todo.addEventListener('click', editTask);
+
 
 
 

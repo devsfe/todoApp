@@ -4,29 +4,46 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    transition: background 0.2s linear;
 }
 
 body {
     width: 100%;
     height: 100vh;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
     background-color: #F6F6F6;
     font-family: 'Roboto', sans-serif;
+    transition: background 0.2s linear;
+}
+
+body.dark {
+    background-color: #0D1117;
 }
 
 .container {
     width: 60%;
     height: 500px;
     background-color: #ffff;
-    overflow: auto;     
+    overflow: auto;   
+    transition: background 0.2s linear;  
+}
+
+.container.lightDark {
+    background-color: #161B22;
 }
 
 .container-top {
     height: 50px;
-    background-color: #52a2fa;
+    background-color: #525151;
     padding: 10px;
+    transition: background 0.2s linear;
+}
+
+.container-top.mediumDark {
+    background-color: #30363D;
 }
 
 .todo-body {
@@ -36,6 +53,10 @@ body {
 .todo-title {
     font-size: 26px;
     color: #fff;
+}
+
+.todo-title.grey {
+    color: #C8D0D8;
 }
 
 .todo-body {
@@ -68,7 +89,7 @@ form {
 
 .todo-btn {
     color: #fff;
-    background-color: #007BFF;
+    background-color: #525151;
     outline: none;
     padding: 15px 40px;
     border: none;
@@ -78,14 +99,14 @@ form {
 }
 
 .todo-btn:hover {
-    background-color: #0268d6;
+    background-color: #292929;
 }
 
 .todo-item {
     display: flex;
     align-items: center;
     padding: 15px;
-    background-color: #74b3f7;
+    background-color: #525151;
     width: 98%;
     margin: 0 0 10px 0;
     animation: animate .3s;
@@ -99,14 +120,11 @@ form {
     border-radius: 50px;
     background: #fcfff4;
     background: linear-gradient(top, #fcfff4 0%, #dfe5d7 40%, #b3bead 100%);
-    box-shadow: inset 0px 1px 1px white, 0px 1px 3px rgba(0,0,0,0.5);
     cursor: pointer;
 }
 
-
-
 .todo-paragraph {
-    color: #1c1c1c;
+    color: #ededed;
 }
 
 .todo-button {
@@ -140,7 +158,7 @@ form {
 }
 
 .todo-checkbox:checked ~ .todo-paragraph {
-    text-decoration: line-through;    
+    text-decoration: line-through;   
 }
 
 @keyframes animate {
@@ -205,4 +223,48 @@ form {
         background-size: 8%;
         background-position: 12px 9px;
     }
+}
+
+/* === Dark Mode Style === */
+.label {
+    width: 50px;
+    height: 22px;
+    background-color: #111;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-radius: 50px;
+    padding: 5px;
+    position: relative;
+    transform: scale(1.5);
+    margin-left: 90%;
+    cursor: pointer;
+}
+
+.fa-moon {
+    color: #f1c40f;
+}
+
+.fa-sun {
+    color: #f39c12;
+}
+
+.ball {
+    width: 19px;
+    height: 18px;
+    position: absolute;
+    background-color: #fff;
+    top: 2px;
+    left: 2px;
+    border-radius: 50%;
+    transition: transform 0.2s linear;
+}
+
+.checkbox:checked + .label .ball {
+    transform: translateX(24px);
+}
+
+.checkbox {
+    opacity: 0;
+    position: absolute;
 }
