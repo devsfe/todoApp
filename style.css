@@ -123,12 +123,19 @@ form {
     justify-self: flex-end;
     margin-left: auto;
     cursor: pointer;
+    padding: 5px;
+    color: #fff;
+    background-color: #DC3645;
+    outline: none;
+    border: none;
 }
 
 .edit-button {
     cursor: pointer;
     border: none;    
-    color: green;
+    color: #fff;
+    background-color: #007BFF;
+    padding: 5px;
     margin: 0 0 0 15px;
 }
 
